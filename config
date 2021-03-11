@@ -206,4 +206,11 @@ bindsym $mod+d exec rofi -show run -opacity "75" -lines 10 -font "System San Fra
 bindsym $mod+Shift+i exec "pactl set-sink-volume 0 +15%; notify-send 'Volume Increased'"
 bindsym $mod+Shift+u exec "pactl set-sink-volume 0 -15%; notify-send 'Volume Decreased'"
 exec --no-startup-id nitrogen --restore --set-zoom
-exec --no-startup-id "picom -b"
+exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
+
+#application: brave,thunar,firefox,code,
+
+#packages: rofi,nitrogen,picom,pactl,redshift,i3blocks,
+
+#additional:  font-awesome
+
