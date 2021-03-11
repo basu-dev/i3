@@ -210,7 +210,8 @@ exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
 
 #application: brave,thunar,firefox,code,
 
-#packages: rofi,nitrogen,picom,pactl,redshift,i3blocks,synclient
+#packages: rofi,nitrogen,picom,pactl,redshift,i3blocks,
 
 #additional:  font-awesome
 
+#for themes use lxappearance,
