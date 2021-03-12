@@ -227,5 +227,5 @@ exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
 
 #packages: rofi,nitrogen,picom,pactl,redshift,i3blocks,synclient
 
-#additional:  font-awesome
+#additional:  font-awesome,arc-dark theme
 
