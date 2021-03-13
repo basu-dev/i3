@@ -210,16 +210,16 @@ client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
 client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 for_window [class="^.*"] border pixel 1
-bindsym $mod+i exec "light -A 10"
-bindsym $mod+u exec "light -U 10"
+bindsym $mod+i exec "light -A 10; pkill -RTMIN+2 i3blocks"
+bindsym $mod+u exec "light -U 10; pkill -RTMIN+2 i3blocks"
 bindsym $mod+Shift+n exec redshift
 bindsym $mod+b exec brave
 bindsym $mod+z exec code
 bindsym $mod+n exec thunar
 exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1
 bindsym $mod+d exec rofi -show run -opacity "75" -lines 10 -font "System San Francisco Display 15"
-bindsym $mod+Shift+i exec "pactl set-sink-volume 0 +15%; notify-send 'Volume Increased'"
-bindsym $mod+Shift+u exec "pactl set-sink-volume 0 -15%; notify-send 'Volume Decreased'"
+bindsym $mod+Shift+i exec "pactl set-sink-volume 0 +15%; pkill -RTMIN+1 i3blocks"
+bindsym $mod+Shift+u exec "pactl set-sink-volume 0 -15%; pkill -RTMIN+1 i3blocks"
 exec --no-startup-id nitrogen --restore --set-zoom
 exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
 
