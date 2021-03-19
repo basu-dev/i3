@@ -179,7 +179,9 @@ bindsym $mod+r mode "resize"
 #
 
 
+gaps outer -10
 gaps inner 10
+
 #For bluish theme(Default)
 #set $i3_background #002b36
 #set $focused_ws_border #5df0df
@@ -250,5 +252,5 @@ exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
 
 
 #for ubuntu: sudo apt install fonts-font-awesome
-#for arch I forgot what I did. just install font_awesome
+#for arch: sudo pacman -S ttf-font-awesome
 

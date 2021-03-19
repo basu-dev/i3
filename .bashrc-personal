@@ -1,0 +1,20 @@
+
+alias i3con="vim ~/.config/i3/config"
+alias i3blc="vim ~/.config/i3/i3blocks.conf"
+alias mirror="sudo reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
+alias history="cat .bash_history"
+alias historyf="cat .bash_history | grep"
+
+export PATH="$PATH:/$HOME/.config/i3/scripts"
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
+
+
+
+neofetch
