@@ -173,14 +173,13 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+x exec firefox
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #
 
 
-
+gaps inner 10
 #For bluish theme(Default)
 #set $i3_background #002b36
 #set $focused_ws_border #5df0df
@@ -192,7 +191,6 @@ set $i3_background #200921
 set $focused_ws_border #c20ec9
 set $infocused_ws_background #714873
 set $separator_color #c20ec9
-
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
  	font pango:Source Sans Pro-10 10
@@ -209,23 +207,48 @@ client.focused #6c71c4 #6c71c4 #fdf6e3 #6c71c4
 client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
 client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
-for_window [class="^.*"] border pixel 1
-bindsym $mod+i exec "light -A 10; pkill -RTMIN+2 i3blocks"
-bindsym $mod+u exec "light -U 10; pkill -RTMIN+2 i3blocks"
-bindsym $mod+Shift+n exec redshift
+
+for_window [class="^.*"] border pixel 1 #Make Borders 1 px only
+
+#Brightness Controls
+bindsym $mod+i exec "light -A 5; pkill -RTMIN+2 i3blocks"
+bindsym $mod+u exec "light -U 5; pkill -RTMIN+2 i3blocks"
+bindsym $mod+Shift+n exec redshift #For nightmode
+
+#Volume controls
+bindsym $mod+Shift+u exec "pactl set-sink-volume 0 -15%; pkill -RTMIN+1 i3blocks"
+bindsym $mod+Shift+i exec "pactl set-sink-volume 0 +15%; pkill -RTMIN+1 i3blocks"
+
+#Personal Key Bindings
 bindsym $mod+b exec brave
 bindsym $mod+z exec code
 bindsym $mod+n exec thunar
-exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1
-bindsym $mod+d exec rofi -show run -opacity "75" -lines 10 -font "System San Francisco Display 15"
-bindsym $mod+Shift+i exec "pactl set-sink-volume 0 +15%; pkill -RTMIN+1 i3blocks"
-bindsym $mod+Shift+u exec "pactl set-sink-volume 0 -15%; pkill -RTMIN+1 i3blocks"
+bindsym $mod+Shift+s "systemctl suspend"
+bindsym $mod+x exec firefox
+
+#Startup Programs
+exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1 #Synaptic Tap Double Tap options for touchpad
+bindsym $mod+d exec rofi -show run -opacity -color-window '#03ffffff #ff00ff #00ff00' -lines 10 -font "System San Francisco Display 15"
 exec --no-startup-id nitrogen --restore --set-zoom
 exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
+
+
 
 #application: brave,thunar,firefox,code,
 
 #packages: rofi,nitrogen,picom,pactl,redshift,i3blocks,synclient
 
 #additional:  font-awesome,arc-dark theme
+
+
+#thunar: It is file manager i Like. you can use nemo or nautilus or pcmanfm , anything you like.
+#rofi: Advanced Search
+#nitrogen: To set Wallpaper
+#pactl: For volume, alternative pavucontrol or pusleaudio not sure
+#redshift: For making screen red
+#synclient: For synaptic touchpad and mouse
+
+
+#for ubuntu: sudo apt install fonts-font-awesome
+#for arch I forgot what I did. just install font_awesome
 
