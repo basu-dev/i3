@@ -6,6 +6,6 @@
 
 
  echo "Other apps you might have installed while running i3 installation scripts are: "
- echo "brave , thunar , ttf-font-awesome , python-pip , grabc (from yay) arc-gtk-theme , sardi-icons  "
+ echo "brave , thunar , ttf-font-awesome , python-pip , grabc (from yay) arc-gtk-theme , sardi-icons xfce4-settings xfce4-terminal"
  echo "You can remove them if you dont want them?  " 
 
