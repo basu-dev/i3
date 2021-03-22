@@ -230,15 +230,15 @@ bindsym $mod+x exec firefox
 
 #Startup Programs
 exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1 #Synaptic Tap Double Tap options for touchpad
-bindsym $mod+d exec rofi -show run -opacity -color-window '#03ffffff #ff00ff #00ff00' -lines 10 -font "System San Francisco Display 15"
+bindsym $mod+d exec rofi -show run -opacity  -lines 10 -font "System San Francisco Display 15"
 exec --no-startup-id nitrogen --restore --set-zoom
 exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
 
-
+exec --no-startup-id xfsettingsd
 
 #application: brave,thunar,firefox,code,
 
-#packages: rofi,nitrogen,picom,pactl,redshift,i3blocks,synclient
+#packages: rofi,nitrogen,picom,pactl,redshift,i3blocks,synclient,python-pip,lxappearance
 
 #additional:  font-awesome,arc-dark theme
 

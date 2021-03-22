@@ -1,0 +1,3 @@
+ create hotspot : nmcli dev wifi hotspot ifname wlp4s0 ssid test password "test1234"
+
+where wlp4s0 is my Wifi Interface

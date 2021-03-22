@@ -9,7 +9,7 @@ function install (){
 		esac
 	done	
 }
-for app in i3blocks i3-gaps brave code thunar rofi nitrogen picom ttf-font-awesome arc-gtk-theme sardi-icons
+for app in i3blocks i3-gaps brave code thunar rofi nitrogen picom ttf-font-awesome arc-gtk-theme sardi-icons light python-pip lxappearance
 
 do install $app $app
 done
