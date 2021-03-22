@@ -1,12 +1,21 @@
-##i3 Config
+## i3 Config
 #### My i3 configurations files
 ---
-### Procedures
+### Installation Procedures
 - Put all these files and folders in ~/.config/i3 folder or replace ~/.config/i3 with this whole folder.
-- Install all the required Applications.
+
 - If you are on arch run following command to install all applications one by one.
 ```{r, engine='bash', count_lines}
 sh /$HOME/.config/i3/installation.sh
+```
+-If you are on Ubuntu or Debial based system: 
+```{r,engine='bash',count_lines}
+sudo apt install i3 i3blocks rofi compton feh light lxappearance acpi
+```
+### Remove i3
+-If you are on arch run the following command
+```{r,engine='bash',count_lines}
+sh /$HOME/.config/i3/removei3-arch.sh
 ```
 Now your desktop should look as amazing as mine.
 </br>
