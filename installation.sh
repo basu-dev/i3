@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo pacman -Syu --noconfirm
 
-for app in i3 i3blocks i3-gaps rofi picom ttf-font-awesome light lxappearance nitrogen python-pip acpi
+for app in i3 i3blocks i3-gaps rofi picom ttf-font-awesome light lxappearance  python-pip acpi feh
 do sudo pacman -S $app --noconfirm
 done
 
