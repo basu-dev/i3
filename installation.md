@@ -55,7 +55,8 @@ dev
 ```
 vim /etc/hosts
 ```
-Here in stead of dev.localhost use what systemname you put before
+I wrote  dev.localhost because dev is my systemname.<br>
+You put your own systemname like  xyx.localdomain xyz
 ```
 127.0.0.1	localhost
 ::1		localhost
@@ -70,7 +71,7 @@ passwd
 useradd -m -g wheel dev
 passwd dev
 
- EDITOR=vim visudo
+EDITOR=vim visudo
 ```
 Here uncomment 
 wheel ALL=(ALL) ALL
@@ -79,7 +80,7 @@ wheel ALL=(ALL) ALL
 ```
 pacman -S grub networkmanager network-manager-applet dialog wireless_tools wpa_supplicant os-prober mtools dosfstools base-devel linux-headers
 ```
-### 15. Install BootLoader (MBR)
+### 15. Configure BootLoader (MBR)
 ```
 grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -90,7 +91,7 @@ exit
 umount -a
 reboot
 ```
-### Now Login with root username and password
+ Now Login with root username and password
 
 ### 17. Activate Network
 ```
@@ -107,7 +108,7 @@ for amd:
 ```
 pacman -S xf86-video-amdgpu
 ```
-for nvidia install following packages
+for nvidia install following packages<br>
 nvidia & nvidia-utils
 
 ### 19. Install Display Server
@@ -115,7 +116,7 @@ nvidia & nvidia-utils
 pacman -S xorg
 ```
 
-### 20. Install Deskto Environment 
+### 20. Install Desktop Environment 
 In this case I am installing my i3 from github
 ```
 pacman -S git
@@ -123,11 +124,18 @@ cd ~/.config
 git clone https://github.com/basu-dev/i3
 cd i3
 sh installation.sh
-``
+```
+
+If you want to use any other like xfce4, or plasma or gnome<br>
+see the documentation for those.. 
+They are pretty straight forward like:
+```
+pacman -S xfce4
+```
 
 ### 21. Install And Enable  DisplayManager
-options: lxdm , lightdm, gddm etc
-I am installing lightdm
+options: lxdm , lightdm, gddm etc<br>
+I am installing lightdm and configuring
 ```
 pacman -S lightdm lightdm-webkit2-greeter
 
@@ -137,7 +145,8 @@ find and set  greeter-session=lightdm-webkit2-greeter
 
 Now enable lightdm
 ```
-systemctl enable --now  lightdm
+systemctl enable --now  lightdm.service
 ```
 
-## You are done now.
+### Congratulations ! You are pretty much done now!
+
