@@ -1,20 +1,28 @@
-
+#aliases
 alias i3con="vim ~/.config/i3/config"
 alias i3blc="vim ~/.config/i3/i3blocks.conf"
 alias mirror="sudo reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
-alias history="cat .bash_history"
-alias historyf="cat .bash_history | grep"
+alias his="cat ~/.bash_history"
+alias hisf="cat ~/.bash_history | grep"
+alias scr="cd ~/.config/i3/scripts;ls"
+alias bp="vim ~/.config/i3/.bashrc-personal"
 
+alias ls='ls --color=auto'
+alias la='ls -a'
+alias ll='ls -la'
+alias l='ls'
+alias l.="ls -A | egrep '^\.'"
+
+#path
 export PATH="$PATH:/$HOME/.config/i3/scripts"
+
+#powerline-shell
 function _update_ps1() {
-    PS1=$(powerline-shell $?)
+	PS1=$(powerline-shell $?) 
 }
 
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
-
-
-
 
 neofetch

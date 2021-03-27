@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo pacman -Syu --noconfirm
 
-for app in i3 i3blocks i3-gaps rofi picom ttf-font-awesome light  python-pip acpi feh xfce4-settings xfce4-terminal xfce4-appfinder
+for app in i3 i3blocks i3-gaps rofi picom ttf-font-awesome light  python-pip acpi feh lxappearance xfce4-terminal ttf-ubuntu-font-family
 do sudo pacman -S $app --noconfirm
 done
 
@@ -17,7 +17,7 @@ function install (){
 #run light command without sudo privillage
 sudo chmod +s /usr/bin/light
 
-for app in  brave code thunar arc-gtk-theme sardi-icons
+for app in  brave firefox code thunar arc-gtk-theme sardi-icons
 #other theme options
 #adwaita-dark , adapta-nokto
 
