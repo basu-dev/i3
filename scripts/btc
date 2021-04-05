@@ -1,2 +1,2 @@
-a="$(curl -s https://api.coindesk.com/v1/bpi/currentprice/usd.json | grep -o 'rate":"[^"]*' | cut -d\" -f3 | grep ".*$")"
+a="$(curl -4 -s https://api.coindesk.com/v1/bpi/currentprice/usd.json | grep -o 'rate":"[^"]*' | cut -d\" -f3 | grep ".*$")"
 echo ${a%.*}
