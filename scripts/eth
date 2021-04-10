@@ -1,0 +1,18 @@
+#!/bin/bash
+rate="$(curl -4 -s 'https://www1.oanda.com/currency/converter/update?base_currency_0=NPR&quote_currency=USD&end_date=2021-04-10&view=details&id=2&action=C&' \
+  -H 'Accept: text/javascript, text/html, application/xml, text/xml, */*' \
+  -H 'X-Prototype-Version: 1.7' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'Referer: https://www1.oanda.com/currency/converter/' \
+  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36' \
+  --compressed | jq .data.rate_data.askRates[] | awk -F '"' '{print $2}')"
+
+echo $rate
+a="$(curl -4 -s https://api.coindesk.com/v1/bpi/currentprice/usd.json | grep -o 'rate":"[^"]*' | cut -d\" -f3 | grep ".*$")"
+int_a=${a%.*}
+echo $int_a
+
+formatted_a=$(echo $a | awk -F "," '{print $1$2}')
+echo $formatted_a
+
+echo | awk '{print $formatted_a}'

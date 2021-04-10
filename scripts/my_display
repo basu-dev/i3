@@ -1,0 +1,4 @@
+#!/bin/bash
+
+text=$(tail -n 1 /tmp/display.txt)
+echo $text

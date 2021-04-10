@@ -1,2 +1,0 @@
-echo cpu | awk '{printf "%.0f\n",$1}'
-

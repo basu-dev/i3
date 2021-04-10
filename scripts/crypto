@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+crypto=$(cat ~/.config/i3/scripts/crypto.txt | rofi -dmenu -i -p "Select Crypto")
+currency=$(cat ~/.config/i3/scripts/currency_list.txt | rofi -dmenu -i -p "Select Currency")
+echo $currency
+
+data=$(curl -4 -s https://api.coinbase.com/v2/exchange-rates?currency=$crypto)
+echo $data | jq .data.rates.$currency | awk -F '"' '{print $2}' >> /tmp/display.txt
+pkill -RTMIN+10 i3blocks
+
+/bin/sleep 7
+
+rm /tmp/display.txt
+touch /tmp/display.txt
+pkill -RTMIN+10 i3blocks
+
+#echo $data | jq .data.rates | awk -F '"' '{print $2}' >> ~/.config/i3/scripts/currency_list.txt
+
+
