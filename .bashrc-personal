@@ -1,21 +1,37 @@
-#aliases
+#aliases for i3
 alias i3con="vim ~/.config/i3/config"
 alias i3blc="vim ~/.config/i3/i3blocks.conf"
-alias mirror="sudo reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
-alias his="cat ~/.bash_history"
-alias hisf="cat ~/.bash_history | grep"
 alias scr="cd ~/.config/i3/scripts;ls"
 alias bp="vim ~/.config/i3/.bashrc-personal"
 
+#systemc commands
+alias sleep="systemctl suspend"
+
+#general aliases
 alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -la'
+
 alias l='ls'
 alias l.="ls -A | egrep '^\.'"
+alias his="cat ~/.bash_history"
+alias hisd="cat ~/.bash_history | rofi -dmenu"
+alias hisf="tac ~/.bash_history | grep"
+alias exe="sudo chmod +x"
+
+md () { mkdir -p "$@" && cd "$1"; }
+
+#for arch only
+alias ins='sudo pacman -S '
+alias rem='sudo pacman -Rns '
+alias mirror="sudo reflector -c India -c Singapore -c Germany --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
 
 #path
 export PATH="$PATH:/$HOME/.config/i3/scripts"
-
+export PATH="$PATH:/$HOME/opt/foxitsoftware/foxitreader"
+export PATH="$PATH:/$HOME/http"
+export PATH="$PATH:/$HOME/scripts"
+export PATH="$PATH:/$HOME/scripts/iporesult"
 #powerline-shell
 function _update_ps1() {
 	PS1=$(powerline-shell $?) 
@@ -25,4 +41,4 @@ if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
-neofetch
+#neofetch

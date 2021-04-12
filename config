@@ -230,11 +230,15 @@ bindsym $mod+x exec firefox
 
 #Startup Programs
 exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1 #Synaptic Tap Double Tap options for touchpad
-bindsym $mod+d exec rofi -show run -opacity  -lines 10 -font "System San Francisco Display 15"
+bindsym $mod+Shift+d exec dmenu_run
+bindsym $mod+d exec rofi -show  run -show-icons -opacity  -lines 10 -font "System San Francisco Display 15"
 exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
 exec_always "feh --bg-fill ~/.config/i3/wallpaper.png"
 exec --no-startup-id xfsettingsd
 for_window [class="xfce4-appfinder"] floating enable
+
+#if not using nm-applet
+bindsym $mod+Shift+w exec mywifi
 
 #change desktop resolution
 # xrandr --output eVD-1 --mode 1360x768
