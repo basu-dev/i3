@@ -3,18 +3,28 @@
 
 crypto=$(cat ~/.config/i3/scripts/crypto.txt | rofi -dmenu -i -p "Select Crypto")
 currency=$(cat ~/.config/i3/scripts/currency_list.txt | rofi -dmenu -i -p "Select Currency")
-echo $currency
 
-data=$(curl -4 -s https://api.coinbase.com/v2/exchange-rates?currency=$crypto)
-echo $data | jq .data.rates.$currency | awk -F '"' '{print $2}' >> /tmp/display.txt
-pkill -RTMIN+10 i3blocks
+data=$(curl -4 -s https://api.coinbase.com/v2/exchange-rates?currency=$crypto | jq .data.rates.$currency)
 
-/bin/sleep 7
+function signal(){
+	pkill -RTMIN+10 i3blocks
+}
+echo $data | awk -F '"' '{print "'$currency' "$2}' >> /tmp/display.txt
+ signal
+/bin/sleep 2
 
+if [ $crypto == "ETH" ]
+then
+	echo $data | awk -F '"' '{print "I have '$currency' "$2*0.00725787}' >> /tmp/display.txt
+	signal
+
+fi
+
+/bin/sleep 3
 rm /tmp/display.txt
 touch /tmp/display.txt
-pkill -RTMIN+10 i3blocks
+signal
 
-#echo $data | jq .data.rates | awk -F '"' '{print $2}' >> ~/.config/i3/scripts/currency_list.txt
+
 
 
