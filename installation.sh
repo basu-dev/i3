@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo pacman -Syu --noconfirm
 
-for app in i3 i3blocks i3-gaps rofi picom ttf-font-awesome light  python-pip acpi feh lxappearance xfce4-terminal ttf-ubuntu-font-family
+for app in i3 i3blocks i3-gaps rofi picom ttf-font-awesome light  python-pip acpi feh lxappearance xfce4-terminal ttf-ubuntu-font-family jq
 do sudo pacman -S $app --noconfirm
 done
 

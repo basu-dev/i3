@@ -17,3 +17,9 @@
 10. multiple commands if one fails cmd1 || cmd2
 11. ctrl+A to go to beginning of command &
    ctrl+E to go to end in terminal
+
+
+# For Arch Linux
+# Connect Android Phone to Arch Linux
+yay -S jmtpfs
+pacman -S mtpfs gvfs-mtp gvfs-gphoto2

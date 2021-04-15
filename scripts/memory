@@ -50,7 +50,9 @@ END {
 		pct=used/total*100
 	}
 	# full text
-	printf("%.1fG/%.1fG (%.f%%)\n", used, total, pct)
+	#printf("%.1fG/%.1fG (%.f%%)\n", used, total, pct)
+	# used in GB and Percentage only
+	printf(" %.1fG/%.1fG\n",used,total)	
 	# short text
 	printf("%.f%%\n", pct)
 	# color

@@ -91,6 +91,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
+
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -222,20 +223,22 @@ bindsym $mod+Shift+u exec "pactl set-sink-volume 0 -15%; pkill -RTMIN+1 i3blocks
 bindsym $mod+Shift+i exec "pactl set-sink-volume 0 +15%; pkill -RTMIN+1 i3blocks"
 
 #Personal Key Bindings
+bindsym Mod4+Tab focus left
+bindsym Mod1+Tab focus left
 bindsym $mod+b exec brave
 bindsym $mod+z exec code
 bindsym $mod+n exec thunar
 bindsym $mod+Shift+s "systemctl suspend"
 bindsym $mod+x exec firefox
+bindsym $mod+Shift+x exec "~/scripts/iplscore/ipl.sh"
+
 
 #Startup Programs
 exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1 #Synaptic Tap Double Tap options for touchpad
-bindsym $mod+Shift+d exec dmenu_run
-bindsym $mod+d exec rofi -show  run -show-icons -opacity  -lines 10 -font "System San Francisco Display 15"
+bindsym $mod+d exec rofi -show run -lines 10 -font 'System San Francisco Display 13'
 exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
 exec_always "feh --bg-fill ~/.config/i3/wallpaper.png"
 exec --no-startup-id xfsettingsd
-for_window [class="xfce4-appfinder"] floating enable
 
 #if not using nm-applet
 bindsym $mod+Shift+w exec mywifi

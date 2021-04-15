@@ -27,11 +27,13 @@ alias rem='sudo pacman -Rns '
 alias mirror="sudo reflector -c India -c Singapore -c Germany --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
 
 #path
-export PATH="$PATH:/$HOME/.config/i3/scripts"
-export PATH="$PATH:/$HOME/opt/foxitsoftware/foxitreader"
-export PATH="$PATH:/$HOME/http"
-export PATH="$PATH:/$HOME/scripts"
-export PATH="$PATH:/$HOME/scripts/iporesult"
+export PATH="$PATH:$HOME/.config/i3/scripts"
+export PATH="$PATH:$HOME/opt/foxitsoftware/foxitreader"
+export PATH="$PATH:$HOME/http"
+export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$HOME/scripts/iporesult"
+
+export PATH="$PATH:$HOME/scripts/iplscore"
 #powerline-shell
 function _update_ps1() {
 	PS1=$(powerline-shell $?) 
