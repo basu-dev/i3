@@ -184,14 +184,14 @@ gaps outer -10
 gaps inner 10
 
 #For bluish theme(Default)
-#set $i3_background #002b36
-#set $focused_ws_border #5df0df
-#set $infocused_ws_background #416e6e
-#set $separator_color #268bd2
+#set $i3_background            #002b36
+#set $focused_ws_border        #5df0df
+#set $infocused_ws_background  #416e6e
+#set $separator_color          #268bd2
  
 #For pinkish theme ( To match my wallpaper) 
 set $i3_background #200921
-set $focused_ws_border #c20ec9
+set $focused_ws_border #5df0df
 set $infocused_ws_background #714873
 set $separator_color #c20ec9
 bar {
@@ -201,15 +201,20 @@ bar {
 colors {
     separator $separator_color
     background $i3_background
-    focused_workspace $focused_ws_border  $i3_background  #ffffff
-    inactive_workspace $infocused_ws_background $infocused_ws_background  #002b36
-    urgent_workspace #d33682 #d33682 #fdf6e3
+    # WorkSpaces on i3bar colors
+    # WORKSPACE          BORDER                    BACKGROUND                 TEXT
+    focused_workspace    $focused_ws_border        $i3_background             #ffffff
+    inactive_workspace   $infocused_ws_background  $infocused_ws_background   #002b36
+    urgent_workspace     #d33682                   #d33682                    #fdf6e3
   } 
 }
-client.focused #6c71c4 #6c71c4 #fdf6e3 #6c71c4
-client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
-client.unfocused #073642 #073642 #93a1a1 #586e75
-client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+
+# COLORS OF WINDOWS
+# WINDOW MODE                       BORDER                 
+client.focused           #6c71c4    $focused_ws_border   #6c71c4
+#client.focused_inactive #073642    #073642 #eee8d5      #6c71c4
+#client.unfocused        #073642    #073642 #93a1a1      #586e75
+client.urgent            #d33682    #d33682 #fdf6e3      #dc322f
 
 for_window [class="^.*"] border pixel 1 #Make Borders 1 px only
 

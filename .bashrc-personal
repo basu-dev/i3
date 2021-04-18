@@ -2,6 +2,7 @@
 alias i3con="vim ~/.config/i3/config"
 alias i3blc="vim ~/.config/i3/i3blocks.conf"
 alias scr="cd ~/.config/i3/scripts;ls"
+
 alias bp="vim ~/.config/i3/.bashrc-personal"
 
 #systemc commands
@@ -19,6 +20,9 @@ alias hisd="cat ~/.bash_history | rofi -dmenu"
 alias hisf="tac ~/.bash_history | grep"
 alias exe="sudo chmod +x"
 
+# For VSCode lol
+alias code.="code ."
+
 md () { mkdir -p "$@" && cd "$1"; }
 
 #for arch only
@@ -35,12 +39,12 @@ export PATH="$PATH:$HOME/scripts/iporesult"
 
 export PATH="$PATH:$HOME/scripts/iplscore"
 #powerline-shell
-function _update_ps1() {
-	PS1=$(powerline-shell $?) 
-}
-
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+#function _update_ps1() {
+#	PS1=$(powerline-shell $?) 
+#}
+#
+#if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+#   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+#fi
 
 #neofetch

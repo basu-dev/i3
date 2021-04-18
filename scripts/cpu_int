@@ -1,1 +1,1 @@
-cpu | awk -F '[<>%]' '{print "<span>"int($3+.5)"%""</span>"}'
+cpu | awk -F '[<>%]' '{print "CPU <span> " int($3+.5)"%""</span>"}'

@@ -2,10 +2,12 @@
 
 
 crypto=$(cat ~/.config/i3/scripts/crypto.txt | rofi -dmenu -i -p "Select Crypto" | awk '{print $NF}')
+[ ${#crypto} == 0 ] && exit 1
 currency=$(cat ~/.config/i3/scripts/currency_list.txt | rofi -dmenu -i -p "Select Currency")
-
+[ ${#currency} == 0 ] && exit 1
 
 data=$(curl -4 -s https://api.coinbase.com/v2/exchange-rates?currency=$crypto | jq .data.rates.$currency)
+[ ${#data} == 0 ] && exit 1
 
 function signal(){
 	pkill -RTMIN+10 i3blocks
