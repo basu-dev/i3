@@ -17,6 +17,8 @@
 10. multiple commands if one fails cmd1 || cmd2
 11. ctrl+A to go to beginning of command &
    ctrl+E to go to end in terminal
+12 . Put scripts path to .profile to make it executable from i3 rofi. i3 doesn't run environment from bashrc
+    or something like that . I haven't understood it for now. I will be clear on this later on.
 
 
 # For Arch Linux

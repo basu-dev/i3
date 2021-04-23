@@ -27,6 +27,7 @@ md () { mkdir -p "$@" && cd "$1"; }
 
 #for arch only
 alias ins='sudo pacman -S '
+alias update='sudo pacman -Syyu'
 alias rem='sudo pacman -Rns '
 alias mirror="sudo reflector -c India -c Singapore -c Germany --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
 
@@ -46,5 +47,7 @@ export PATH="$PATH:$HOME/scripts/iplscore"
 #if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
 #   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 #fi
-
+# Default Programs
+export EDITOR=nvim
+export VISUAL=nvim
 #neofetch

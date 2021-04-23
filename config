@@ -54,10 +54,10 @@ bindsym $mod+q kill
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -66,10 +66,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -78,7 +78,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+g split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -232,7 +232,7 @@ bindsym Mod4+Tab focus left
 bindsym Mod1+Tab focus left
 bindsym $mod+b exec brave
 bindsym $mod+z exec code
-bindsym $mod+n exec thunar
+bindsym $mod+n exec "xfce4-terminal -e ranger" 
 bindsym $mod+Shift+s "systemctl suspend"
 bindsym $mod+x exec firefox
 bindsym $mod+Shift+x exec "~/scripts/iplscore/ipl.sh"
@@ -240,14 +240,14 @@ bindsym $mod+Shift+x exec "~/scripts/iplscore/ipl.sh"
 
 #Startup Programs
 exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1 #Synaptic Tap Double Tap options for touchpad
-bindsym $mod+d exec rofi -show run -lines 10 -font 'System San Francisco Display 13'
+bindsym $mod+d mode "rovi"; exec rofi -show run -lines 10 -font 'System San Francisco Display 13'
 exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
 exec_always "feh --bg-fill ~/.config/i3/wallpaper.png"
 exec --no-startup-id xfsettingsd
-
+exec --no-startup-id kdeconnect-indicator
 #if not using nm-applet
 bindsym $mod+Shift+w exec mywifi
-
+bindsym $mod+Shift+m exec "alacritty -e htop"
 #change desktop resolution
 # xrandr --output eVD-1 --mode 1360x768
 # here eVD-1 should be replaced by your own display Name
