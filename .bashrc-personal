@@ -1,9 +1,9 @@
 #aliases for i3
-alias i3con="vim ~/.config/i3/config"
-alias i3blc="vim ~/.config/i3/i3blocks.conf"
-alias scr="cd ~/.config/i3/scripts;ls"
+alias i3con="nvim ~/.config/i3/config"
+alias i3blc="nvim ~/.config/i3/i3blocks.conf"
+alias scr="cd ~/scripts;ls"
 
-alias bp="vim ~/.config/i3/.bashrc-personal"
+alias bp="nvim ~/.config/i3/.bashrc-personal"
 
 #systemc commands
 alias sleep="systemctl suspend"
@@ -12,24 +12,28 @@ alias sleep="systemctl suspend"
 alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -la'
-
 alias l='ls'
 alias l.="ls -A | egrep '^\.'"
-alias his="cat ~/.bash_history"
-alias hisd="cat ~/.bash_history | rofi -dmenu"
-alias hisf="tac ~/.bash_history | grep"
+alias his="tac ~/.cache/zsh/history | less"
+#alias hisd="tac ~/.cache/zsh/history | rofi -dmenu"
+alias hisf="tac ~/.cache/zsh/history | grep"
 alias exe="sudo chmod +x"
-
+hisd(){
+	tac ~/.cache/zsh/history | rofi -dmenu -p "Find Commands" | xsel -b
+}
 # For VSCode lol
 alias code.="code ."
 
-md () { mkdir -p "$@" && cd "$1"; }
 
 #for arch only
+alias pacman="sudo pacman"
 alias ins='sudo pacman -S '
-alias update='sudo pacman -Syyu'
+alias update='sudo pacman -Syu'
 alias rem='sudo pacman -Rns '
-alias mirror="sudo reflector -c India -c Singapore -c Germany --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirror="sudo reflector -c India -c Singapore -c Germany --latest 10 "\
+"--sort rate --save /etc/pacman.d/mirrorlist"
+alias alac="nvim ~/.config/alacritty/alacritty.yml"
+
 
 #path
 export PATH="$PATH:$HOME/.config/i3/scripts"
@@ -37,8 +41,9 @@ export PATH="$PATH:$HOME/opt/foxitsoftware/foxitreader"
 export PATH="$PATH:$HOME/http"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/scripts/iporesult"
-
 export PATH="$PATH:$HOME/scripts/iplscore"
+
+
 #powerline-shell
 #function _update_ps1() {
 #	PS1=$(powerline-shell $?) 
@@ -51,3 +56,11 @@ export PATH="$PATH:$HOME/scripts/iplscore"
 export EDITOR=nvim
 export VISUAL=nvim
 #neofetch
+alias nv="nvim"
+
+
+#For My Custom Directories
+alias ang='cd ~/Desktop/angular;ls'
+alias nodejs='cd ~/Desktop/nodejs;ls'
+alias flut='cd ~/Desktop/flutter;ls'
+alias sec="cd ~/Desktop/project/second-mom;ls"

@@ -41,7 +41,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 
@@ -156,10 +156,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -232,7 +232,7 @@ bindsym Mod4+Tab focus left
 bindsym Mod1+Tab focus left
 bindsym $mod+b exec brave
 bindsym $mod+z exec code
-bindsym $mod+n exec "xfce4-terminal -e ranger" 
+bindsym $mod+n exec "thunar" 
 bindsym $mod+Shift+s "systemctl suspend"
 bindsym $mod+x exec firefox
 bindsym $mod+Shift+x exec "~/scripts/iplscore/ipl.sh"

@@ -1,2 +1,12 @@
-a="$(curl -4 -s https://api.coindesk.com/v1/bpi/currentprice/usd.json | grep -o 'rate":"[^"]*' | cut -d\" -f3 | grep ".*$")"
-echo ${a%.*}
+#!/bin/sh
+# coindesk api
+#a="$(curl -4 -s https://api.coindesk.com/v1/bpi/currentprice/usd.json | grep -o 'rate":"[^"]*' | cut -d\" -f3 | grep ".*$")"
+#echo ${a%.*}
+
+# Coinbase api
+crypto="eth"
+currency="USD"
+data=$(curl -4 -s  "https://api.coinbase.com/v2/exchange-rates?currency=$crypto" | jq -r .data.rates.$currency)
+echo $data | awk -F '.' '{print $1}'
+
+

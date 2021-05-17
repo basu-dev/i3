@@ -1,2 +1,3 @@
-ifconfig | grep "inet " | grep -v "127.0" | awk '{print $2}'
+#!/bin/sh
+ip addr | grep 'inet ' | grep 24 | awk '{print $2}'
 
