@@ -28,7 +28,7 @@ alias code.="code ."
 #for arch only
 alias pacman="sudo pacman"
 alias ins='sudo pacman -S '
-alias update='sudo pacman -Syu'
+alias update='sudo yay -Syyu'
 alias rem='sudo pacman -Rns '
 alias mirror="sudo reflector -c India -c Singapore -c Germany --latest 10 "\
 "--sort rate --save /etc/pacman.d/mirrorlist"
@@ -42,7 +42,7 @@ export PATH="$PATH:$HOME/http"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/scripts/iporesult"
 export PATH="$PATH:$HOME/scripts/iplscore"
-
+export PATH="$PATH:$HOME/.cargo/bin/"
 
 #powerline-shell
 #function _update_ps1() {
