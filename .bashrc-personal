@@ -27,14 +27,18 @@ alias code.="code ."
 
 #for arch only
 alias pacman="sudo pacman"
-alias ins='sudo pacman -S '
-alias update='sudo yay -Syyu'
-alias rem='sudo pacman -Rns '
+alias ins='yay -S '
+alias update='yay -Syyu'
+alias rem='yay -Rns '
 alias mirror="sudo reflector -c India -c Singapore -c Germany --latest 10 "\
 "--sort rate --save /etc/pacman.d/mirrorlist"
 alias alac="nvim ~/.config/alacritty/alacritty.yml"
-
-
+alias pal="paleofetch"
+#For git
+# alias ga="git add"
+# alias gm="git commit"
+# alias gp="git push"
+#
 #path
 export PATH="$PATH:$HOME/.config/i3/scripts"
 export PATH="$PATH:$HOME/opt/foxitsoftware/foxitreader"
@@ -43,7 +47,7 @@ export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/scripts/iporesult"
 export PATH="$PATH:$HOME/scripts/iplscore"
 export PATH="$PATH:$HOME/.cargo/bin/"
-
+export MYVIMRC="$HOME/.vim/init.vim"
 #powerline-shell
 #function _update_ps1() {
 #	PS1=$(powerline-shell $?) 
@@ -53,14 +57,23 @@ export PATH="$PATH:$HOME/.cargo/bin/"
 #   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 #fi
 # Default Programs
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=/bin/nvim
+export VISUAL=/bin/nvim
 #neofetch
 alias nv="nvim"
 
-
 #For My Custom Directories
-alias ang='cd ~/Desktop/angular;ls'
-alias nodejs='cd ~/Desktop/nodejs;ls'
+alias ga='cd ~/Desktop/angular;ls'
+alias gn='cd ~/Desktop/nodejs;ls'
 alias flut='cd ~/Desktop/flutter;ls'
 alias sec="cd ~/Desktop/project/second-mom;ls"
+
+alias hr="cd ~/Desktop/angular/angular-hr;ls"
+alias hrs="cd ~/Desktop/angular/angular-hr;ng serve --hmr"
+
+hrb(){
+cd ~/Desktop/angular/angular-hr;ng build --prod;
+cp -r dist ~/Desktop/test;
+cd ~/Desktop/test;
+netlify deploy -p
+}

@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo pacman -Syu --noconfirm
 
-for app in i3 i3blocks i3-gaps rofi picom ttf-font-awesome light  python-pip acpi feh lxappearance xfce4-terminal ttf-ubuntu-font-family jq
+for app in i3blocks i3-gaps rofi picom ttf-font-awesome light acpi xwallpaper lxappearance xfce4-terminal ttf-ubuntu-font-family jq
 do sudo pacman -S $app --noconfirm
 done
 
@@ -17,27 +17,21 @@ function install (){
 #run light command without sudo privillage
 sudo chmod +s /usr/bin/light
 
-for app in  brave firefox code thunar arc-gtk-theme sardi-icons
-#other theme options
-#adwaita-dark , adapta-nokto
-
-
+for app in  brave firefox code thunar arc-gtk-theme sardi-icons yay
 do install $app $app
 done
-echo "Install Powerline Shell for colorful shell?"
- select yn in "Yes" "No";do
-	 case $yn in
-		 Yes ) pip install powerline-shell;break;;
-		 No ) break;
-	esac
-done
 
-#echo "Install Eye Dropper for picking color?"
-# select yn in "Yes" "No";do
-#	 case $yn in
-#		 Yes ) yay -S grabc --noconfirm;break;;
-#		 No ) break;
-#	esac
-#done
+yay -S scrot sxiv mutt-wizard colorpicker
 
+# Other apps
+# 1. scrot 
+# 2. sxiv
 
+# echo "Install Powerline Shell for colorful shell?"
+ # select yn in "Yes" "No";do
+	 # case $yn in
+		 # Yes ) sudo pacman -S python-pip; pip install powerline-shell;break;;
+		 # No ) break;
+	# esac
+# done
+#

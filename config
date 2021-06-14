@@ -32,11 +32,18 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && pkill -RTMIN+1 i3blocks
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && pkill -RTMIN+1 i3blocks
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Media Controls
+bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioStop exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -67,7 +74,7 @@ bindsym $mod+Right focus right
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l right
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -144,8 +151,24 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t danger -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t danger -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+mode "Exit : [l]ogout , [r]eboot, [s]leep , [p]oweroff" {
 
+  bindsym l exec i3-msg exit
+
+  bindsym r exec systemctl reboot
+
+  bindsym s exec systemctl suspend
+  
+  bindsym p exec systemctl poweroff
+
+  bindsym Escape mode "default"
+
+  bindsym Return mode "default"
+
+}
+
+bindsym $mod+Shift+e mode "Exit : [l]ogout , [r]eboot, [s]leep , [p]oweroff"
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -173,33 +196,32 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#
 
+# For bluish theme(Default)
 
-gaps outer -10
-gaps inner 10
-
-#For bluish theme(Default)
 #set $i3_background            #002b36
 #set $focused_ws_border        #5df0df
 #set $infocused_ws_background  #416e6e
 #set $separator_color          #268bd2
  
-#For pinkish theme ( To match my wallpaper) 
+# For pinkish theme ( To match my wallpaper) 
+
+#======================= COLORS IN BOTTOM PANEL ================================
+
 set $i3_background #200921
 set $focused_ws_border #5df0df
 set $infocused_ws_background #714873
 set $separator_color #c20ec9
-bar {
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
- 	font pango:Source Sans Pro-10 10
 
+
+bar {
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+ 	font pango:Source Sans Pro-10 10
 colors {
     separator $separator_color
     background $i3_background
-    # WorkSpaces on i3bar colors
+
+    # WorkSpaces(Small Square Boxes with numbers) colors on i3bar colors
     # WORKSPACE          BORDER                    BACKGROUND                 TEXT
     focused_workspace    $focused_ws_border        $i3_background             #ffffff
     inactive_workspace   $infocused_ws_background  $infocused_ws_background   #002b36
@@ -207,76 +229,99 @@ colors {
   } 
 }
 
-# COLORS OF WINDOWS
+#======================= COLORS OF WINDOWS ======================
+
 # WINDOW MODE                       BORDER                 
 client.focused           #6c71c4    $focused_ws_border   #6c71c4
-#client.focused_inactive #073642    #073642 #eee8d5      #6c71c4
-#client.unfocused        #073642    #073642 #93a1a1      #586e75
 client.urgent            #d33682    #d33682 #fdf6e3      #dc322f
 
-for_window [class="^.*"] border pixel 1 #Make Borders 1 px only
 
-#Brightness Controls
-bindsym $mod+i exec "light -A 5; pkill -RTMIN+2 i3blocks"
-bindsym $mod+u exec "light -U 5; pkill -RTMIN+2 i3blocks"
-bindsym $mod+Shift+n exec redshift #For nightmode
+#================= Personal Key Bindings =========================
 
-#Volume controls
+
+# Brightness Controls
+bindsym $mod+i exec "light -A 2; pkill -RTMIN+2 i3blocks"
+bindsym $mod+u exec "light -U 2; pkill -RTMIN+2 i3blocks"
+
+# For nightmode
+bindsym $mod+Shift+n exec redshift 
+
+# Volume controls
 bindsym $mod+Shift+u exec "pactl set-sink-volume 0 -15%; pkill -RTMIN+1 i3blocks"
 bindsym $mod+Shift+i exec "pactl set-sink-volume 0 +15%; pkill -RTMIN+1 i3blocks"
 
-#Personal Key Bindings
-bindsym $mod+Tab focus left
-bindsym Mod1+Tab focus left
+# Applications
 bindsym $mod+b exec brave
 bindsym $mod+z exec code
-bindsym $mod+n exec "thunar" 
-bindsym $mod+Shift+s "systemctl suspend"
+bindsym $mod+n exec "alacritty -e lf" 
 bindsym $mod+x exec firefox
-bindsym $mod+Shift+x exec "~/scripts/iplscore/ipl.sh"
 bindsym $mod+Shift+m exec "alacritty -e htop"
 bindsym Mod1+s exec "spotify"
-bindsym $mod+d mode "rovi"; exec rofi -show run -lines 10 -font 'System San Francisco Display 13'
-bindsym Mod1+d exec "dmenu_run"
-bindsym Mod1+n exec "~/scripts/wallpaper.sh" 
+bindsym Mod1+g exec "mw -Y & alacritty -e neomutt"
+bindsym $mod+d exec rofi -show run -lines 10 -font 'System San Francisco Display 13'
 
-#Startup Programs
-exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1 #Synaptic Tap Double Tap options for touchpad
+
+# Scripts
+bindsym Mod1+n exec "~/scripts/wallpaper.sh" 
+bindsym Mod1+b exec "~/scripts/wallpaper.sh prev"
+bindsym Mod1+m exec "~/scripts/wallpaper.sh menu"
+bindsym $mod+Shift+s "systemctl suspend"
+bindsym Print exec "scrot '%Y-%m-%d_%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/'&& notify-send 'Screenshot Captured'"
+
+bindsym --release Shift+Print exec "scrot -s '%Y-%m-%d_%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/'&& notify-send 'Screenshot Captured'"
+
+# Remaping for window resize
+bindsym Mod1+Shift+h resize shrink width 10 px or 5 ppt
+bindsym Mod1+Shift+j resize grow height 10 px or 5 ppt
+bindsym Mod1+Shift+k resize shrink height 10 px or 5 ppt
+bindsym Mod1+Shift+l resize grow width 10 px or 5 ppt
+
+# Remaping for focus Window
+bindsym $mod+Tab focus left
+bindsym Mod1+Tab focus left
+bindsym Mod1+f exec i3-msg 'workspace 5; exec
+#================ Default Behaviours Certain Applications ========
+
+assign [class="Brave"] $ws2
+for_window [class="alacritty"] focus
+for_window [class="Brave"] focus
+for_window [class="Spotify"] move to workspace $ws9 focus
+for_window [class="code-oss"] move to workspace $ws1 focus
+for_window [class="Sxiv"] floating enable move right 300px,move up 0px
+# for_window [class="Sxiv"] floating enable geometry {"x": 1600, "y": 1, "width": 150, "height": 150}
+
+#==================== Startup Programs ==========================
+
+# Synaptic Tap Double Tap options for touchpad
+exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1 
 exec --no-startup-id "picom --config ~/.config/i3/picom.conf"
+
 # For wallpaper
-#exec_always "feh --bg-fill ~/.config/i3/wallpaper.png"
+# Its still called fehbg but I use xwallpaper
+#xwallpaper --zoom '~/.config/i3/wallpaper.png'
 exec_always ~/.fehbg
-exec --no-startup-id xfsettingsd
 exec --no-startup-id kdeconnect-indicator
 exec --nop-startup-id dunst
+exec_always --no-startup-id autotiling
 
+#================== Window Properties ===========================
+
+#Make Borders 1 px only
+for_window [class="^.*"] border pixel 1 
+gaps outer -10
+gaps inner 10
+
+#for_window [class="^sxiv$" role="^floating$"] floating enable
+
+#=================== Additional Info =============================
 #<++>
 
-
-
-
-
-#if not using nm-applet
-#change desktop resolution
+# change desktop resolution
 # xrandr --output eVD-1 --mode 1360x768
 # here eVD-1 should be replaced by your own display Name
 
-
-#application: brave,thunar,firefox,code,
-
-#packages: rofi,nitrogen,picom,pactl,redshift,i3blocks,synclient,python-pip,lxappearance
-
-#additional:  font-awesome,arc-dark theme
-
-
-#thunar: It is file manager i Like. you can use nemo or nautilus or pcmanfm , anything you like.
-#rofi: Advanced Search
-#nitrogen: To set Wallpaper
-#pactl: For volume, alternative pavucontrol or pusleaudio not sure
-#redshift: For making screen red
-#synclient: For synaptic touchpad and mouse
-
-
-#for ubuntu: sudo apt install fonts-font-awesome
-#for arch: sudo pacman -S ttf-font-awesome
+# application: brave,thunar,firefox,code,sxiv,ranger,nvim
+# packages: rofi,nitrogen,picom,pactl,redshift,i3blocks,synclient,python-pip,lxappearance
+# additional:  font-awesome,arc-dark theme
+# synclient: For synaptic touchpad and mouse
 
