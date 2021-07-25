@@ -34,6 +34,8 @@ alias mirror="sudo reflector -c India -c Singapore -c Germany --latest 10 "\
 "--sort rate --save /etc/pacman.d/mirrorlist"
 alias alac="nvim ~/.config/alacritty/alacritty.yml"
 alias pal="paleofetch"
+
+alias ipolist="node ~/Desktop/nodejs/node_with_python/node/index.js"
 #For git
 # alias ga="git add"
 # alias gm="git commit"
@@ -67,13 +69,33 @@ alias ga='cd ~/Desktop/angular;ls'
 alias gn='cd ~/Desktop/nodejs;ls'
 alias flut='cd ~/Desktop/flutter;ls'
 alias sec="cd ~/Desktop/project/second-mom;ls"
+alias hr="cd ~/Desktop/Office/angular-hr;ls"
+alias tr="cd ~/Desktop/Office/tatoo-deals;ls"
 
-alias hr="cd ~/Desktop/angular/angular-hr;ls"
-alias hrs="cd ~/Desktop/angular/angular-hr;ng serve --hmr"
+
+# Angular Commands
+
+alias ngb4="node --max-old-space-size=4096 ./node_modules/@angular/cli/bin/ng build --prod";
+alias ngb3="node --max-old-space-size=3072 ./node_modules/@angular/cli/bin/ng build --prod";
+alias ngs3="node --max-old-space-size=3072 ./node_modules/@angular/cli/bin/ng serve --hmr";
+
+alias hrs="cd ~/Desktop/Office/angular-hr;ng serve --hmr"
+
+alias trs="cd ~/Desktop/Office/tatoo-deals;ng serve --hmr"
 
 hrb(){
-cd ~/Desktop/angular/angular-hr;ng build --prod;
-cp -r dist ~/Desktop/test;
-cd ~/Desktop/test;
-netlify deploy -p
+	cd ~/Desktop/Office/angular-hr;ngb4;
+	cp -r dist ~/Desktop/Deploys/b;
+	cd ~/Desktop/Deploys/b
+	netlify deploy --prod --dir=dist
+	cd -
 }
+
+trb(){
+	cd ~/Desktop/Office/tatoo-deals;ngb4;
+	cp -r dist ~/Desktop/Deploys/a;
+	cd ~/Desktop/Deploys/a
+	netlify deploy --prod --dir=dist/tattoo-shop
+	cd -
+}
+

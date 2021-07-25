@@ -283,6 +283,7 @@ bindsym Mod1+f exec i3-msg 'workspace 5; exec
 #================ Default Behaviours Certain Applications ========
 
 assign [class="Brave"] $ws2
+assign [class="Slack"] $ws9
 for_window [class="alacritty"] focus
 for_window [class="Brave"] focus
 for_window [class="Spotify"] move to workspace $ws9 focus
