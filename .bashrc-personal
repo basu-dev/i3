@@ -1,6 +1,6 @@
 #aliases for i3
-alias i3con="nvim ~/.config/i3/config"
-alias i3blc="nvim ~/.config/i3/i3blocks.conf"
+alias i3con="vim ~/.config/i3/config"
+alias i3blc="vim ~/.config/i3/i3blocks.conf"
 alias scr="cd ~/scripts;ls"
 
 alias bp="nvim ~/.config/i3/.bashrc-personal"
@@ -59,7 +59,8 @@ export MYVIMRC="$HOME/.vim/init.vim"
 #   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 #fi
 # Default Programs
-export EDITOR=/bin/nvim
+#
+export EDITOR=/bin/vim
 export VISUAL=/bin/nvim
 #neofetch
 alias nv="nvim"
@@ -70,7 +71,7 @@ alias gn='cd ~/Desktop/nodejs;ls'
 alias flut='cd ~/Desktop/flutter;ls'
 alias sec="cd ~/Desktop/project/second-mom;ls"
 alias hr="cd ~/Desktop/Office/angular-hr;ls"
-alias tr="cd ~/Desktop/Office/tatoo-deals;ls"
+alias tr="cd ~/Desktop/Office/tattoo-shop;ls"
 
 
 # Angular Commands
@@ -81,7 +82,7 @@ alias ngs3="node --max-old-space-size=3072 ./node_modules/@angular/cli/bin/ng se
 
 alias hrs="cd ~/Desktop/Office/angular-hr;ng serve --hmr"
 
-alias trs="cd ~/Desktop/Office/tatoo-deals;ng serve --hmr"
+alias trs="cd ~/Desktop/Office/tattoo-shop;ng serve --hmr"
 
 hrb(){
 	cd ~/Desktop/Office/angular-hr;ngb4;
@@ -92,7 +93,7 @@ hrb(){
 }
 
 trb(){
-	cd ~/Desktop/Office/tatoo-deals;ngb4;
+	cd ~/Desktop/Office/tattoo-shop;ngb4;
 	cp -r dist ~/Desktop/Deploys/a;
 	cd ~/Desktop/Deploys/a
 	netlify deploy --prod --dir=dist/tattoo-shop
