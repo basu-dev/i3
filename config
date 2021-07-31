@@ -196,16 +196,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
-# For bluish theme(Default)
-
-#set $i3_background            #002b36
-#set $focused_ws_border        #5df0df
-#set $infocused_ws_background  #416e6e
-#set $separator_color          #268bd2
- 
-# For pinkish theme ( To match my wallpaper) 
-
 #======================= COLORS IN BOTTOM PANEL ================================
 
 set $i3_background #200921
@@ -238,10 +228,13 @@ client.urgent            #d33682    #d33682 #fdf6e3      #dc322f
 
 #================= Personal Key Bindings =========================
 
+bindsym Mod1+Shift+minus move scratchpad
+
+bindsym Mod1+minus scratchpad show
 
 # Brightness Controls
 bindsym $mod+i exec "light -A 2; pkill -RTMIN+2 i3blocks"
-bindsym $mod+u exec "light -U 2; pkill -RTMIN+2 i3blocks"
+bindsym $mod+u exec "light -U 1; pkill -RTMIN+2 i3blocks"
 
 # For nightmode
 bindsym $mod+Shift+n exec redshift 
@@ -249,11 +242,11 @@ bindsym $mod+Shift+n exec redshift
 # Volume controls
 bindsym $mod+Shift+u exec "pactl set-sink-volume 0 -15%; pkill -RTMIN+1 i3blocks"
 bindsym $mod+Shift+i exec "pactl set-sink-volume 0 +15%; pkill -RTMIN+1 i3blocks"
-
 # Applications
 bindsym $mod+b exec brave
 bindsym $mod+z exec code
 bindsym $mod+n exec "alacritty -e lf" 
+bindsym Mod1+c exec "alacritty -e cal"
 bindsym $mod+x exec firefox
 bindsym $mod+Shift+m exec "alacritty -e htop"
 bindsym Mod1+s exec "spotify"

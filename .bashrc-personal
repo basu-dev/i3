@@ -1,6 +1,6 @@
 #aliases for i3
-alias i3con="vim ~/.config/i3/config"
-alias i3blc="vim ~/.config/i3/i3blocks.conf"
+alias i3con="nvim ~/.config/i3/config"
+alias i3blc="nvim ~/.config/i3/i3blocks.conf"
 alias scr="cd ~/scripts;ls"
 
 alias bp="nvim ~/.config/i3/.bashrc-personal"
@@ -86,17 +86,14 @@ alias trs="cd ~/Desktop/Office/tattoo-shop;ng serve --hmr"
 
 hrb(){
 	cd ~/Desktop/Office/angular-hr;ngb4;
-	cp -r dist ~/Desktop/Deploys/b;
-	cd ~/Desktop/Deploys/b
-	netlify deploy --prod --dir=dist
-	cd -
+	# cp -r dist ~/Desktop/Deploys/b;
+	# cd ~/Desktop/Deploys/b
+	# netlify deploy --prod --dir=dist
+	# cd -
 }
 
 trb(){
 	cd ~/Desktop/Office/tattoo-shop;ngb4;
-	cp -r dist ~/Desktop/Deploys/a;
-	cd ~/Desktop/Deploys/a
-	netlify deploy --prod --dir=dist/tattoo-shop
-	cd -
+
 }
 

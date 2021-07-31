@@ -73,3 +73,8 @@ nmcli dev wifi hotspot wlp4s0 ssid hostspot_name password "your password"
 yay -S jmtpfs
 pacman -S mtpfs gvfs-mtp gvfs-gphoto2
 ```
+
+# For Ubuntu Server On Virtualbox
+
+Problem: Block Probing did not discover any disk.
+Solution: Put both iso and .vdi file on Controller IDE and make Controller SATA empty
