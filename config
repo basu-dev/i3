@@ -1,34 +1,14 @@
+###############################################
+#                                             #
+#             i3 Config (v4)                  #             
+#           BASU DEV ADHIKARI                 #
+#                                             #
+###############################################
 
-# It will not be overwritten, so edit it as you like.
-#
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-#
-
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
+#========================= DEFAULT CONFIG ===================
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
 font pango:monospace 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && pkill -RTMIN+1 i3blocks
@@ -49,14 +29,6 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
-
-# start dmenu (a program launcher)
-#bindsym $mod+d exec --no-startup-id dmenu_run
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -151,7 +123,11 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t danger -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+#===================== DEFAULT CONFIG END =============================
+
+#===================== POWER OPTIONS ==================================
+
 mode "Exit : [l]ogout , [r]eboot, [s]leep , [p]oweroff" {
 
   bindsym l exec i3-msg exit
@@ -169,37 +145,11 @@ mode "Exit : [l]ogout , [r]eboot, [s]leep , [p]oweroff" {
 }
 
 bindsym $mod+Shift+e mode "Exit : [l]ogout , [r]eboot, [s]leep , [p]oweroff"
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
 
 #======================= COLORS IN BOTTOM PANEL ================================
 
 set $i3_background #200921
-set $focused_ws_border #5df0df
+set $focused_ws_border #00ffff
 set $infocused_ws_background #714873
 set $separator_color #c20ec9
 
@@ -207,15 +157,17 @@ set $separator_color #c20ec9
 bar {
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
  	font pango:Source Sans Pro-10 10
-colors {
-    separator $separator_color
-    background $i3_background
+    # position top
+    # height 21
+    colors {
+      separator $separator_color
+      background $i3_background
 
-    # WorkSpaces(Small Square Boxes with numbers) colors on i3bar colors
-    # WORKSPACE          BORDER                    BACKGROUND                 TEXT
-    focused_workspace    $focused_ws_border        $i3_background             #ffffff
-    inactive_workspace   $infocused_ws_background  $infocused_ws_background   #002b36
-    urgent_workspace     #d33682                   #d33682                    #fdf6e3
+      # WorkSpaces(Small Square Boxes with numbers) colors on i3bar colors
+      # WORKSPACE          BORDER                    BACKGROUND                 TEXT
+      focused_workspace    $focused_ws_border        $i3_background             #ffffff
+      inactive_workspace   $infocused_ws_background  $infocused_ws_background   #002b36
+      urgent_workspace     #d33682                   #d33682                    #fdf6e3
   } 
 }
 
@@ -226,10 +178,9 @@ client.focused           #6c71c4    $focused_ws_border   #6c71c4
 client.urgent            #d33682    #d33682 #fdf6e3      #dc322f
 
 
-#================= Personal Key Bindings =========================
+#======================= PERSONAL KEY BINDINGS =========================
 
 bindsym Mod1+Shift+minus move scratchpad
-
 bindsym Mod1+minus scratchpad show
 
 # Brightness Controls
@@ -242,26 +193,28 @@ bindsym $mod+Shift+n exec redshift
 # Volume controls
 bindsym $mod+Shift+u exec "pactl set-sink-volume 0 -15%; pkill -RTMIN+1 i3blocks"
 bindsym $mod+Shift+i exec "pactl set-sink-volume 0 +15%; pkill -RTMIN+1 i3blocks"
+
 # Applications
 bindsym $mod+b exec brave
 bindsym $mod+z exec code
 bindsym $mod+n exec "alacritty -e lf" 
-bindsym Mod1+c exec "alacritty -e cal"
+bindsym Mod1+c exec alacritty -e "cal" & disown;
 bindsym $mod+x exec firefox
 bindsym $mod+Shift+m exec "alacritty -e htop"
 bindsym Mod1+s exec "spotify"
 bindsym Mod1+g exec "mw -Y & alacritty -e neomutt"
 bindsym $mod+d exec rofi -show run -lines 10 -font 'System San Francisco Display 13'
 
-
 # Scripts
-bindsym Mod1+n exec "~/scripts/wallpaper.sh" 
-bindsym Mod1+b exec "~/scripts/wallpaper.sh prev"
-bindsym Mod1+m exec "~/scripts/wallpaper.sh menu"
+bindsym Mod1+i exec "alacritty -e iporesults";
+bindsym Mod1+Shift+i exec "ipl.sh";
+bindsym Mod1+Shift+n exec "~/scripts/wallpaper.sh" 
+bindsym Mod1+Shift+b exec "~/scripts/wallpaper.sh prev"
+bindsym Mod1+Shift+m exec "~/scripts/wallpaper.sh menu"
 bindsym $mod+Shift+s "systemctl suspend"
 bindsym Print exec "scrot '%Y-%m-%d_%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/'&& notify-send 'Screenshot Captured'"
-
 bindsym --release Shift+Print exec "scrot -s '%Y-%m-%d_%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/'&& notify-send 'Screenshot Captured'"
+bindsym Mod1+n exec "alacritty -title=notetaker_window --working-directory ~/Documents/Tasks -e ~/scripts/notes.sh"
 
 # Remaping for window resize
 bindsym Mod1+Shift+h resize shrink width 10 px or 5 ppt
@@ -273,6 +226,7 @@ bindsym Mod1+Shift+l resize grow width 10 px or 5 ppt
 bindsym $mod+Tab focus left
 bindsym Mod1+Tab focus left
 bindsym Mod1+f exec i3-msg 'workspace 5; exec
+
 #================ Default Behaviours Certain Applications ========
 
 assign [class="Brave"] $ws2
@@ -282,9 +236,13 @@ for_window [class="Brave"] focus
 for_window [class="Spotify"] move to workspace $ws9 focus
 for_window [class="code-oss"] move to workspace $ws1 focus
 for_window [class="Sxiv"] floating enable move right 300px,move up 0px
+for_window [title="notetaker_window"] floating enable
 # for_window [class="Sxiv"] floating enable geometry {"x": 1600, "y": 1, "width": 150, "height": 150}
 
-#==================== Startup Programs ==========================
+#==================== STARTUP PROGRAMS ==========================
+
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
 
 # Synaptic Tap Double Tap options for touchpad
 exec --no-startup-id synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1 
@@ -298,10 +256,11 @@ exec --no-startup-id kdeconnect-indicator
 exec --nop-startup-id dunst
 exec_always --no-startup-id autotiling
 
-#================== Window Properties ===========================
+#================== WINDOW PROPERTIES ===========================
 
 #Make Borders 1 px only
 for_window [class="^.*"] border pixel 1 
+# hide_edge_borders smart
 gaps outer -10
 gaps inner 10
 

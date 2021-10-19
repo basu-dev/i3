@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
-#
+
+# Copyring 2021 Basu Dev Adhikari <adbasudev54@gmail.com>
 # Copyright 2014 Pierre Mavro <deimos@deimos.fr>
 # Copyright 2014 Vivien Didelot <vivien@didelot.org>
 #
@@ -43,7 +44,7 @@ elsif ($acpi !~ /: ([\w\s]+), (\d+)%/) {
 $status = $1;
 $percent = $2;
 
-if($percent > 5 and $percent < 30){
+if($percent >= 5 and $percent < 30){
 	$batteryIndicator=" " 
 }elsif($percent >= 30 and $percent < 60){
 	$batteryIndicator=" "

@@ -1,4 +1,9 @@
 #!/bin/bash
+
+echo ""
+echo "========= Updating All Your Packages First ==========="
+echo ""
+
 sudo pacman -Syu --noconfirm
 
 for app in i3blocks i3-gaps rofi picom ttf-font-awesome light acpi xwallpaper lxappearance xfce4-terminal ttf-ubuntu-font-family jq
@@ -21,11 +26,23 @@ for app in  brave firefox code thunar arc-gtk-theme sardi-icons yay
 do install $app $app
 done
 
-yay -S scrot sxiv mutt-wizard colorpicker
 
-# Other apps
-# 1. scrot 
-# 2. sxiv
+echo "Install unzip,scrot sxiv mutt-wizard colorpicker unzip?"
+
+installAdditional(){
+	yay -S scrot sxiv mutt-wizard colorpicker unzip
+}
+
+
+
+select yn in "Yes" "No"; do
+		case $yn in 
+			Yes ) installAdditional;break;;
+			No ) break;
+		esac
+	done	
+
+
 
 # echo "Install Powerline Shell for colorful shell?"
  # select yn in "Yes" "No";do

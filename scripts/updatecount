@@ -1,0 +1,17 @@
+#!/bin/sh
+
+sudo -S yay -q -Sy <~/.secrets/a > /dev/null
+
+display(){
+    count=$(yay -Qu | wc -l)
+    [ "$count" != 0 ] && echo " $count"
+}
+
+if [ "$button" ]; then
+    alacritty -e yay -Su;
+    display;
+    pkill -RTMIN+20;
+else
+    display;
+fi
+

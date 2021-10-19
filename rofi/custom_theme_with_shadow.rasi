@@ -1,9 +1,12 @@
+
 /******************************************************************************
- * ROFI Color theme With Shadow
+ * ROFI Color theme
+ * User: Rasi
  * Copyright Basu Dev Adhikari
  ******************************************************************************/
 
 * {
+    shadow:#00000088;
     primary-color:               #5df0df;
     primary-text-color:          #000;
     secondary-color:             #b02dc2;
@@ -14,15 +17,18 @@
 }
 
 window {
-    background-color: @background;
-    border:0 0 0 5;
-    border-color:@primary-color;
+    background-color: @shadow;
     padding:5;
-    
+    fullscreen:true;
 }
+
 mainbox {
     border:  0;
     padding: 20 30;
+    margin:25% 22%;
+    background-color:@background;
+    border:0 0 0 5;
+    border-color:@primary-color;
 }
 
 message {

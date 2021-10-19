@@ -77,13 +77,23 @@ alias tr="cd ~/Desktop/Office/tattoo-shop;ls"
 # Angular Commands
 
 alias ngb4="node --max-old-space-size=4096 ./node_modules/@angular/cli/bin/ng build --prod";
-alias ngb3="node --max-old-space-size=3072 ./node_modules/@angular/cli/bin/ng build --prod";
+
+alias ngbc="NG_PERSISTENT_BUILD_CACHE=1 node --max-old-space-size=4096 ./node_modules/@angular/cli/bin/ng build --prod";
+alias ngb3="node --max-old-space-size=3072 ./node_modules/@angular/cli/bin/ng build ";
 alias ngs3="node --max-old-space-size=3072 ./node_modules/@angular/cli/bin/ng serve --hmr";
+alias ngc="NG_PERSISTENT_BUILD_CACHE=1 node --max-old-space-size=3072 ./node_modules/@angular/cli/bin/ng serve --hmr";
+
+ngl3(){
+	host=$(ip.sh)
+	ngs3 --host $host
+	echo $host
+
+}
 
 alias hrs="cd ~/Desktop/Office/angular-hr;ng serve --hmr"
 
 alias trs="cd ~/Desktop/Office/tattoo-shop;ng serve --hmr"
-
+alias trl="cd ~/Desktop/Office/tattoo-shop;ng serve --hmr --host 192.168.1.16"
 hrb(){
 	cd ~/Desktop/Office/angular-hr;ngb4;
 	# cp -r dist ~/Desktop/Deploys/b;
@@ -94,6 +104,23 @@ hrb(){
 
 trb(){
 	cd ~/Desktop/Office/tattoo-shop;ngb4;
+	cp -r dist ~/Desktop/Deploys/a;
+	cd ~/Desktop/Deploys/a/dist
+	netlify deploy --prod --dir=tattoo-shop
+	cd -
 
 }
+
+
+## For systemctl
+alias s-status="sudo systemctl status "
+alias s-restart="sudo systemctl restart "
+alias s-stop="sudo systemctl stop "
+
+#export PATH="$PATH:~/libwebp-0.6.1-linux-x86-32/bin"
+
+### For NVM
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
